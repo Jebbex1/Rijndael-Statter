@@ -1,0 +1,18 @@
+[project]
+name = "rijndael-statter"
+version = "0.1.0"
+description = "An enhanced version of Rijndael encryption"
+authors = [
+    {name = "Jebbex",email = "107323805+Jebbex1@users.noreply.github.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "galois (>=0.4.6,<0.5.0)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
