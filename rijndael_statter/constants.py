@@ -1,5 +1,5 @@
 import numpy as np
-from galois import GF, Poly
+from galois import GF, FieldArray
 
 PRIME_FIELD = GF(2)        # finite field for the coefficients of every polynomial
 EXTENTION_FIELD = GF(2**8) # finite field for the irreducible polynomial
@@ -43,3 +43,62 @@ INVERSE_S_BOX: tuple = (
 )
 
 
+XY_MULT_MATRIX: FieldArray = EXTENTION_FIELD(
+    (
+        ( 48,  74, 236, 232),
+        ( 45, 194,  80, 138),
+        (225, 206, 216, 102),
+        (250, 191,  15,  68),
+        
+    )
+)
+
+
+INVERSE_XY_MULT_MATRIX: FieldArray = EXTENTION_FIELD(
+    (
+        (147, 156,  40,  86),
+        (160, 164,  77, 160),
+        (149, 121, 164, 124),
+        (233,  78,  47,  36),
+    )
+)
+
+
+XZ_MULT_MATRIX: FieldArray = EXTENTION_FIELD(
+    (
+        ( 51,  93, 190, 152),
+        (240, 150, 211, 188),
+        (143, 245,  19, 149),
+        ( 81, 140, 247,   3),
+    )
+)
+
+
+INVERSE_XZ_MULT_MATRIX: FieldArray = EXTENTION_FIELD(
+    (
+        ( 13,  89, 140, 138),
+        (118, 117,  53, 218),
+        ( 57, 252, 192, 205),
+        (228, 219,  93,  64),
+    )
+)
+
+
+YZ_MULT_MATRIX: FieldArray = EXTENTION_FIELD(
+    (
+        (181, 166, 232, 196),
+        ( 88,  33, 171, 116),
+        ( 48, 215, 151,  86),
+        ( 99, 250,  63,   4),
+    )
+)
+
+
+INVERSE_YZ_MULT_MATRIX: FieldArray = EXTENTION_FIELD(
+    (
+        ( 43, 111,  95, 129),
+        ( 45, 193,  78, 254),
+        ( 13,  46,  92, 247),
+        ( 48,  34,  59, 112),
+    )
+)
