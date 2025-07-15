@@ -1,5 +1,5 @@
 import numpy as np
-from rijndael_statter import Block, get_ordered_block
+from rijnd3d import Block, get_ordered_block
 
 
 def test_repr_compiling() -> None:

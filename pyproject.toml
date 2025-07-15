@@ -1,5 +1,5 @@
 [project]
-name = "rijndael-statter"
+name = "rijnd3d"
 version = "0.1.0"
 description = "An enhanced version of Rijndael encryption"
 authors = [
