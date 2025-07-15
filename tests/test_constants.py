@@ -1,10 +1,10 @@
 import numpy as np
 from galois import FieldArray
-from rijnd3d import EXTENTION_FIELD, XY_MULT_MATRIX, INVERSE_XY_MULT_MATRIX, XZ_MULT_MATRIX, \
+from rijnd3d import EXTENSION_FIELD, XY_MULT_MATRIX, INVERSE_XY_MULT_MATRIX, XZ_MULT_MATRIX, \
     INVERSE_XZ_MULT_MATRIX, YZ_MULT_MATRIX, INVERSE_YZ_MULT_MATRIX, S_BOX, INVERSE_S_BOX
 
 
-IDENTITY_MATRIX: FieldArray = EXTENTION_FIELD(
+IDENTITY_MATRIX: FieldArray = EXTENSION_FIELD(
     (
         (1, 0, 0, 0),
         (0, 1, 0, 0),
@@ -13,15 +13,15 @@ IDENTITY_MATRIX: FieldArray = EXTENTION_FIELD(
     )
 )
 
-def test_xy_mult_matracies() -> None:
+def test_xy_mult_matrices() -> None:
     assert np.all(np.equal(IDENTITY_MATRIX, XY_MULT_MATRIX @ INVERSE_XY_MULT_MATRIX))
 
 
-def test_xz_mult_matracies() -> None:
+def test_xz_mult_matrices() -> None:
     assert np.all(np.equal(IDENTITY_MATRIX, XZ_MULT_MATRIX @ INVERSE_XZ_MULT_MATRIX))
 
 
-def test_yz_mult_matracies() -> None:
+def test_yz_mult_matrices() -> None:
     assert np.all(np.equal(IDENTITY_MATRIX, YZ_MULT_MATRIX @ INVERSE_YZ_MULT_MATRIX))
 
 

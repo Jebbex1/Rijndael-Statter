@@ -1,5 +1,5 @@
 import numpy as np
-from .constants import S_BOX, INVERSE_S_BOX, EXTENTION_FIELD, XY_MULT_MATRIX, INVERSE_XY_MULT_MATRIX, XZ_MULT_MATRIX, \
+from .constants import S_BOX, INVERSE_S_BOX, EXTENSION_FIELD, XY_MULT_MATRIX, INVERSE_XY_MULT_MATRIX, XZ_MULT_MATRIX, \
     INVERSE_XZ_MULT_MATRIX, YZ_MULT_MATRIX, INVERSE_YZ_MULT_MATRIX
 from numba import jit
 
@@ -76,7 +76,7 @@ class Block(np.ndarray):
 
 
     @jit(nopython=True, nogil=True, cache=True)
-    def rotate_elements(self) -> None:  # XZ layer permumtation
+    def rotate_elements(self) -> None:  # XZ layer permutation
         for y in range(0, 4):
             self[0][y][1], self[0][y][3], self[2][y][3], self[2][y][1] = \
                 self[2][y][1], self[0][y][1], self[0][y][3], self[2][y][3]  # group 2
@@ -138,34 +138,34 @@ class Block(np.ndarray):
     def mix_xy_columns(self) -> None:
         for z in range(0, 4):
             self[slice(0, 4)][slice(0, 4)][z] = \
-                (XY_MULT_MATRIX @ EXTENTION_FIELD(self[slice(0, 4)][slice(0, 4)][z]))
+                (XY_MULT_MATRIX @ EXTENSION_FIELD(self[slice(0, 4)][slice(0, 4)][z]))
     
 
     def inverse_mix_xy_columns(self) -> None:
         for z in range(0, 4):
             self[slice(0, 4)][slice(0, 4)][z] = \
-                (INVERSE_XY_MULT_MATRIX @ EXTENTION_FIELD(self[slice(0, 4)][slice(0, 4)][z]))
+                (INVERSE_XY_MULT_MATRIX @ EXTENSION_FIELD(self[slice(0, 4)][slice(0, 4)][z]))
 
 
     def mix_xz_columns(self) -> None:
         for y in range(0, 4):
             self[slice(0, 4)][y][slice(0, 4)] = \
-                (XZ_MULT_MATRIX @ EXTENTION_FIELD(self[slice(0, 4)][y][slice(0, 4)]))
+                (XZ_MULT_MATRIX @ EXTENSION_FIELD(self[slice(0, 4)][y][slice(0, 4)]))
     
 
     def inverse_mix_xz_columns(self) -> None:
         for y in range(0, 4):
             self[slice(0, 4)][y][slice(0, 4)] = \
-                (INVERSE_XZ_MULT_MATRIX @ EXTENTION_FIELD(self[slice(0, 4)][y][slice(0, 4)]))
+                (INVERSE_XZ_MULT_MATRIX @ EXTENSION_FIELD(self[slice(0, 4)][y][slice(0, 4)]))
     
 
     def mix_yz_columns(self) -> None:
         for x in range(0, 4):
             self[x][slice(0, 4)][slice(0, 4)] = \
-                (YZ_MULT_MATRIX @ EXTENTION_FIELD(self[x][slice(0, 4)][slice(0, 4)]))
+                (YZ_MULT_MATRIX @ EXTENSION_FIELD(self[x][slice(0, 4)][slice(0, 4)]))
     
 
     def inverse_mix_yz_columns(self) -> None:
         for x in range(0, 4):
             self[x][slice(0, 4)][slice(0, 4)] = \
-                (INVERSE_YZ_MULT_MATRIX @ EXTENTION_FIELD(self[x][slice(0, 4)][slice(0, 4)]))
+                (INVERSE_YZ_MULT_MATRIX @ EXTENSION_FIELD(self[x][slice(0, 4)][slice(0, 4)]))
