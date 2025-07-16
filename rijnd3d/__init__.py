@@ -1,3 +1,1 @@
-from .block import Block, get_ordered_block
-from .constants import PRIME_FIELD, EXTENSION_FIELD, S_BOX, INVERSE_S_BOX, XY_MULT_MATRIX, \
-    INVERSE_XY_MULT_MATRIX, XZ_MULT_MATRIX, INVERSE_XZ_MULT_MATRIX, YZ_MULT_MATRIX, INVERSE_YZ_MULT_MATRIX
+from . import block, constants, gf_arithmetic

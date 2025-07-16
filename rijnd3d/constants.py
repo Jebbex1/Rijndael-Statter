@@ -1,8 +1,5 @@
 import numpy as np
-from galois import GF, FieldArray
 
-PRIME_FIELD = GF(2)        # finite field for the coefficients of every polynomial
-EXTENSION_FIELD = GF(2**8) # finite field for the irreducible polynomial
 
 S_BOX: tuple = (
     0x63, 0x7C, 0x77, 0x7B, 0xF2, 0x6B, 0x6F, 0xC5, 0x30, 0x01, 0x67, 0x2B, 0xFE, 0xD7, 0xAB, 0x76, 
@@ -43,18 +40,17 @@ INVERSE_S_BOX: tuple = (
 )
 
 
-XY_MULT_MATRIX: FieldArray = EXTENSION_FIELD(
+XY_MULT_MATRIX: np.ndarray = np.asarray(
     (
         ( 48,  74, 236, 232),
         ( 45, 194,  80, 138),
         (225, 206, 216, 102),
         (250, 191,  15,  68),
-        
     )
 )
 
 
-INVERSE_XY_MULT_MATRIX: FieldArray = EXTENSION_FIELD(
+INVERSE_XY_MULT_MATRIX: np.ndarray = np.asarray(
     (
         (147, 156,  40,  86),
         (160, 164,  77, 160),
@@ -64,7 +60,7 @@ INVERSE_XY_MULT_MATRIX: FieldArray = EXTENSION_FIELD(
 )
 
 
-XZ_MULT_MATRIX: FieldArray = EXTENSION_FIELD(
+XZ_MULT_MATRIX: np.ndarray = np.asarray(
     (
         ( 51,  93, 190, 152),
         (240, 150, 211, 188),
@@ -74,7 +70,7 @@ XZ_MULT_MATRIX: FieldArray = EXTENSION_FIELD(
 )
 
 
-INVERSE_XZ_MULT_MATRIX: FieldArray = EXTENSION_FIELD(
+INVERSE_XZ_MULT_MATRIX: np.ndarray = np.asarray(
     (
         ( 13,  89, 140, 138),
         (118, 117,  53, 218),
@@ -84,7 +80,7 @@ INVERSE_XZ_MULT_MATRIX: FieldArray = EXTENSION_FIELD(
 )
 
 
-YZ_MULT_MATRIX: FieldArray = EXTENSION_FIELD(
+YZ_MULT_MATRIX: np.ndarray = np.asarray(
     (
         (181, 166, 232, 196),
         ( 88,  33, 171, 116),
@@ -94,7 +90,7 @@ YZ_MULT_MATRIX: FieldArray = EXTENSION_FIELD(
 )
 
 
-INVERSE_YZ_MULT_MATRIX: FieldArray = EXTENSION_FIELD(
+INVERSE_YZ_MULT_MATRIX: np.ndarray = np.asarray(
     (
         ( 43, 111,  95, 129),
         ( 45, 193,  78, 254),
