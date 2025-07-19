@@ -52,4 +52,3 @@ def generate_round_keys(initial_key: bytes):
         keys[i] = word_groups[i].reshape((4, 4, 4))
     
     return keys
-        
