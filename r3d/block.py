@@ -1,12 +1,13 @@
 import numpy as np
+import random
 from .constants import S_BOX, INVERSE_S_BOX, XY_MULT_MATRIX, INVERSE_XY_MULT_MATRIX, XZ_MULT_MATRIX, \
     INVERSE_XZ_MULT_MATRIX, YZ_MULT_MATRIX, INVERSE_YZ_MULT_MATRIX
 from .gf_arithmetic import multiply_mats
 from numba import jit
 
 
-def get_ordered_block():
-    return block_from_bytes(b"".join(i.to_bytes(1) for i in range(64)))
+def get_random_block():
+    return block_from_bytes(b"".join([random.randint(0, 255).to_bytes(1) for _ in range(64)]))
     
 
 def block_from_bytes(source_bytes: bytes) -> np.ndarray:

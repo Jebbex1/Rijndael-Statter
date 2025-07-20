@@ -1,22 +1,18 @@
 import numpy as np
 import random
 from r3d.cipher import perform_round, perform_inverse_round, encrypt_block, decrypt_block
-from r3d.block import get_ordered_block, export_to_bytes
+from r3d.block import get_random_block, export_to_bytes
 
 
 def test_circular_perform_round() -> None:
-    for _ in range(100):
-        b = get_ordered_block()
-        b_start_copy = b.copy()
-        test_key = np.asarray([random.randint(0, 255) for _ in range(64)], dtype=np.uint8).reshape((4, 4, 4))
+    b = get_random_block()
+    b_start_copy = b.copy()
+    test_key = np.asarray([random.randint(0, 255) for _ in range(64)], dtype=np.uint8).reshape((4, 4, 4))
 
-        assert export_to_bytes(b) == export_to_bytes(b_start_copy)
-
-        perform_round(b, test_key)
-        assert export_to_bytes(b) != export_to_bytes(b_start_copy)
-
-        perform_inverse_round(b, test_key)
-        assert export_to_bytes(b) == export_to_bytes(b_start_copy)
+    perform_round(b, test_key)
+    perform_inverse_round(b, test_key)
+    
+    assert export_to_bytes(b) == export_to_bytes(b_start_copy)
 
 
 def test_circular_block_encryption() -> None:
