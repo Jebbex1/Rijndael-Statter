@@ -1,28 +1,42 @@
 import random
 from r3d.modes.ecb import ecb_encrypt, ecb_decrypt
 from r3d.modes.cbc import cbc_encrypt, cbc_decrypt
+from r3d.modes.ctr import ctr_encrypt, ctr_decrypt
 
 
 def test_circular_ecb() -> None:
-    test_key = random.randbytes(64)
-    test_plaintext = random.randbytes(246)
+    key = random.randbytes(64)
+    plaintext = random.randbytes(200)
     
-    encrypted = ecb_encrypt(test_plaintext, test_key)
-    assert len(encrypted) >= len(test_plaintext)
+    encrypted = ecb_encrypt(plaintext, key)
+    assert len(encrypted) >= len(plaintext)
     
-    decrypted = ecb_decrypt(encrypted, test_key)
+    decrypted = ecb_decrypt(encrypted, key)
     
-    assert test_plaintext == decrypted
+    assert plaintext == decrypted
 
 
 def test_circular_cbc() -> None:
-    test_key = random.randbytes(64)
-    test_plaintext = random.randbytes(259)
+    key = random.randbytes(64)
+    plaintext = random.randbytes(200)
     
-    encrypted = cbc_encrypt(test_plaintext, test_key)
-    assert len(encrypted) >= len(test_plaintext)
+    encrypted = cbc_encrypt(plaintext, key)
+    assert len(encrypted) >= len(plaintext)
     
-    decrypted = cbc_decrypt(encrypted, test_key)
+    decrypted = cbc_decrypt(encrypted, key)
     
-    assert test_plaintext == decrypted
+    assert plaintext == decrypted
+
+
+def test_circular_ctr() -> None:
+    key = random.randbytes(64)
+    plaintext = random.randbytes(200)
+    counter = random.randint(0, 2**512-1)
+    
+    encrypted = ctr_encrypt(plaintext, key, counter)
+    assert len(encrypted) >= len(plaintext)
+    
+    decrypted = ctr_decrypt(encrypted, key, counter)
+    
+    assert plaintext == decrypted
     

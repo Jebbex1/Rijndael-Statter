@@ -86,9 +86,9 @@ def test_circular_mix_yz_columns() -> None:
 
 def test_add_round_key():
     b = get_random_block()
-    test_key = np.asarray([random.randint(0, 255) for _ in range(64)], dtype=np.uint8).reshape((4, 4, 4))
+    key = np.asarray([random.randint(0, 255) for _ in range(64)], dtype=np.uint8).reshape((4, 4, 4))
     
-    add_round_key(b, test_key)
+    add_round_key(b, key)
     
     for location, value in np.ndenumerate(b):
         assert value == b[location]
