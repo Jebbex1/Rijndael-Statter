@@ -7,5 +7,8 @@ This module is programmed in pure Python, it implements finite-field arithmetic 
 - Block size: 512 bits
 - Number of rounds per-block: 16
 
-## Installation and Usage
-As of writing this readme, the module is not yet finished and ready for deployment. When it is, there will be an official release to PyPI.
+## Installation
+This module is available only on PyPI, installation via pip:
+```
+pip install r3d-cipher
+```
