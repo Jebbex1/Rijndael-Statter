@@ -19,11 +19,12 @@ def test_circular_ecb() -> None:
 def test_circular_cbc() -> None:
     key = random.randbytes(64)
     plaintext = random.randbytes(200)
+    iv = random.randbytes(64)
     
-    encrypted = cbc_encrypt(plaintext, key)
+    encrypted = cbc_encrypt(plaintext, key, iv)
     assert len(encrypted) >= len(plaintext)
     
-    decrypted = cbc_decrypt(encrypted, key)
+    decrypted = cbc_decrypt(encrypted, key, iv)
     
     assert plaintext == decrypted
 
