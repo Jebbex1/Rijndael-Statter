@@ -10,5 +10,5 @@ This module is programmed in pure Python, it implements finite-field arithmetic 
 ## Installation
 This module is available only on PyPI, installation via pip:
 ```
-pip install r3d-cipher
+pip install rijndael3d
 ```
