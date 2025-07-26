@@ -1,7 +1,7 @@
 import numpy as np
 import random
-from r3d.cipher import perform_round, perform_inverse_round, encrypt_block, decrypt_block
-from r3d.block import get_random_block, export_to_bytes
+from rijndael3d.cipher import perform_round, perform_inverse_round, encrypt_block, decrypt_block
+from rijndael3d.block import get_random_block, export_to_bytes
 
 
 def test_circular_perform_round() -> None:

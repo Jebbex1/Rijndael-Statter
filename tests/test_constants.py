@@ -1,7 +1,7 @@
 import numpy as np
-from r3d.constants import XY_MULT_MATRIX, INVERSE_XY_MULT_MATRIX, XZ_MULT_MATRIX, \
+from rijndael3d.constants import XY_MULT_MATRIX, INVERSE_XY_MULT_MATRIX, XZ_MULT_MATRIX, \
     INVERSE_XZ_MULT_MATRIX, YZ_MULT_MATRIX, INVERSE_YZ_MULT_MATRIX, S_BOX, INVERSE_S_BOX
-from r3d.gf_arithmetic import multiply_mats
+from rijndael3d.gf_arithmetic import multiply_mats
 
 
 IDENTITY_MATRIX: np.ndarray = np.asarray(

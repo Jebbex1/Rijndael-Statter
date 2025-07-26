@@ -1,10 +1,10 @@
 import numpy as np
 import random
-from r3d.block import get_random_block, sub_bytes, shift_rows, mix_xy_columns, rotate_elements, \
+from rijndael3d.block import get_random_block, sub_bytes, shift_rows, mix_xy_columns, rotate_elements, \
     mix_yz_columns, add_round_key, inverse_mix_xy_columns, inverse_mix_xz_columns, inverse_mix_yz_columns, \
     inverse_rotate_elements, inverse_shift_rows, inverse_spin_rings, inverse_sub_bytes, mix_xz_columns, \
     xy_layered_repr, xz_layered_repr, yz_layered_repr, block_from_bytes, export_to_bytes, spin_rings
-from r3d.cipher import perform_round, perform_inverse_round
+from rijndael3d.cipher import perform_round, perform_inverse_round
 
 
 def test_repr_compiling() -> None:

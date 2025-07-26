@@ -1,5 +1,5 @@
 import random
-from r3d.padding import generate_suffix, pad, unpad
+from rijndael3d.padding import generate_suffix, pad, unpad
 
 
 def test_generate_suffix() -> None:

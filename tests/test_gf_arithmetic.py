@@ -1,7 +1,7 @@
 from galois import Poly, FieldArray, GF
 import random
 import numpy as np
-from r3d.gf_arithmetic import gf_multiply, multiply_mats
+from rijndael3d.gf_arithmetic import gf_multiply, multiply_mats
     
 
 WORKING_FIELD = GF(2**8)

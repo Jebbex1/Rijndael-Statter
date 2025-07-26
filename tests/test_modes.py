@@ -1,7 +1,7 @@
 import random
-from r3d.modes.ecb import ecb_encrypt, ecb_decrypt
-from r3d.modes.cbc import cbc_encrypt, cbc_decrypt
-from r3d.modes.ctr import ctr_encrypt, ctr_decrypt
+from rijndael3d.modes.ecb import ecb_encrypt, ecb_decrypt
+from rijndael3d.modes.cbc import cbc_encrypt, cbc_decrypt
+from rijndael3d.modes.ctr import ctr_encrypt, ctr_decrypt
 
 
 def test_circular_ecb() -> None:
