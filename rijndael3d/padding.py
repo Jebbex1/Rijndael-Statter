@@ -1,5 +1,6 @@
 import random
 from hashlib import sha512
+from numba import jit
 
 
 def generate_suffix(length: int, key: bytes) -> bytes:

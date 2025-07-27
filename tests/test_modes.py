@@ -32,12 +32,12 @@ def test_circular_cbc() -> None:
 def test_circular_ctr() -> None:
     key = random.randbytes(64)
     plaintext = random.randbytes(200)
-    counter = random.randint(0, 2**512-1)
+    iv = random.randint(0, 2**512-1).to_bytes(64)
     
-    encrypted = ctr_encrypt(plaintext, key, counter)
+    encrypted = ctr_encrypt(plaintext, key, iv)
     assert len(encrypted) >= len(plaintext)
     
-    decrypted = ctr_decrypt(encrypted, key, counter)
+    decrypted = ctr_decrypt(encrypted, key, iv)
     
     assert plaintext == decrypted
     

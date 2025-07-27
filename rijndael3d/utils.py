@@ -1,3 +1,7 @@
+from numba import jit
+
+
+@jit(nopython=True, nogil=True, cache=True)
 def partition_text_to_blocks(source: bytes, assert_blocks = True) -> list[bytes]:
     if assert_blocks:
         assert len(source)%64 == 0, "Can only partition multiples of 64."
