@@ -6,7 +6,7 @@ from rijndael3d.modes.ctr import ctr_encrypt, ctr_decrypt
 
 def test_circular_ecb() -> None:
     key = random.randbytes(64)
-    plaintext = random.randbytes(200)
+    plaintext = random.randbytes(256)
     
     encrypted = ecb_encrypt(plaintext, key)
     assert len(encrypted) >= len(plaintext)
@@ -18,7 +18,7 @@ def test_circular_ecb() -> None:
 
 def test_circular_cbc() -> None:
     key = random.randbytes(64)
-    plaintext = random.randbytes(200)
+    plaintext = random.randbytes(256)
     iv = random.randbytes(64)
     
     encrypted = cbc_encrypt(plaintext, key, iv)
@@ -31,7 +31,7 @@ def test_circular_cbc() -> None:
 
 def test_circular_ctr() -> None:
     key = random.randbytes(64)
-    plaintext = random.randbytes(200)
+    plaintext = random.randbytes(256)
     iv = random.randint(0, 2**512-1).to_bytes(64)
     
     encrypted = ctr_encrypt(plaintext, key, iv)
