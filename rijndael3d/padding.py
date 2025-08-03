@@ -1,6 +1,5 @@
 import random
 from hashlib import sha512
-from numba import jit
 
 
 def generate_suffix(length: int, key: bytes) -> bytes:
@@ -8,7 +7,7 @@ def generate_suffix(length: int, key: bytes) -> bytes:
     random.seed(sha512(key).hexdigest())  
     suffix = b"".join([random.randint(1, 255).to_bytes(1) for _ in range(length-1)])
     return b"\x00" + suffix
-    
+
 
 def pad(plaintext_bytes: bytes, key: bytes) -> bytes:
     suffix_len = 64 - (len(plaintext_bytes) % 64) if len(plaintext_bytes)%64 != 0 else 64

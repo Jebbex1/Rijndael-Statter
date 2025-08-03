@@ -1,6 +1,5 @@
-from numba import jit
 from ..utils import partition_text_to_blocks, xor_bytes
-from ..cipher import encrypt_block, decrypt_block
+from ..cipher import encrypt_block
 
 
 # for Counter mode, it is the same operation for encryption and decryption
