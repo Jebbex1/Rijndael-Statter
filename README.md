@@ -8,7 +8,7 @@ This module is programmed in pure Python, it implements finite-field arithmetic 
 - Number of rounds: 16 rounds
 - Structure: substitution–permutation network
 - Padding method: pseudo-randomized (seeded) padding using the SHA512 of the key.
-- Supported modes: the current version of Rijndael3D supports the following modes; `ECB`, `CBC`, and `CTR`. `GCM` is planned to be added.
+- Supported modes: the current version of Rijndael3D supports the following modes; `ECB`, `CBC`, `CTR`, and `GCM`.
 
 ## Disclaimer
 This module was built as a fun project to learn cryptography and cryptanalysis. It is not designed to withstand side channel attacks or other advanced cryptanalysis techniques.
