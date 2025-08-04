@@ -1,10 +1,11 @@
 from galois import Poly, FieldArray, GF
 import random
 import numpy as np
-from rijndael3d.gf_arithmetic import gf_multiply, multiply_mats
+from rijndael3d.gf_arithmetic import gf_multiply, multiply_mats, gf_2_512_multiply_bytes
     
 
 WORKING_FIELD = GF(2**8)
+GCM_FIELD =     GF(2**512, irreducible_poly=((1 << 512) | (1 << 8) | (1 << 5) | (1 << 2) | 1))
 
 
 IDENTITY_MATRIX: FieldArray = WORKING_FIELD(
@@ -43,6 +44,15 @@ def test_gf_multiply() -> None:
         r2 = random.randint(0, 255)
         out1 = gf_multiply(r1, r2)
         out2 = (Poly.Int(r1, WORKING_FIELD) * Poly.Int(r2, WORKING_FIELD))
+        assert out1 == out2
+
+
+def test_gf_2_512_multiply_bytes() -> None:
+    for _ in range(64):
+        r1 = random.randint(0, (2**512)-1)
+        r2 = random.randint(0, (2**512)-1)
+        out1 = int.from_bytes(gf_2_512_multiply_bytes(r1.to_bytes(64), r2.to_bytes(64)))
+        out2 = (Poly.Int(r1, GCM_FIELD) * Poly.Int(r2, GCM_FIELD))
         assert out1 == out2
 
 
