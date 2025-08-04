@@ -3,7 +3,6 @@ from rijndael3d.modes.ecb import ecb_encrypt, ecb_decrypt
 from rijndael3d.modes.cbc import cbc_encrypt, cbc_decrypt
 from rijndael3d.modes.ctr import ctr_encrypt, ctr_decrypt
 from rijndael3d.modes.gcm import gcm_encrypt, gcm_decrypt
-from rijndael3d.utils     import xor_bytes
 
 
 def test_circular_ecb() -> None:
@@ -29,7 +28,7 @@ def test_circular_cbc() -> None:
 
 def test_circular_ctr() -> None:
     key = random.randbytes(64)
-    plaintext = random.randbytes(256)
+    plaintext = random.randbytes(300)  # should be able to support non-rounded lengths
     iv = random.randint(0, 2**512-1).to_bytes(64)
     
     encrypted = ctr_encrypt(plaintext, key, iv)    
@@ -40,7 +39,7 @@ def test_circular_ctr() -> None:
     
 def test_circular_gcm() -> None:
     key = random.randbytes(64)
-    plaintext = random.randbytes(256)
+    plaintext = random.randbytes(300)  # should be able to support non-rounded lengths
     iv = random.randint(0, 2**512-1).to_bytes(64)
     aad = random.randbytes(400)
     
@@ -57,7 +56,7 @@ def test_circular_gcm() -> None:
 
 def test_gcm_auth() -> None:
     key = random.randbytes(64)
-    plaintext = random.randbytes(256)
+    plaintext = random.randbytes(300)
     iv = random.randint(0, 2**512-1).to_bytes(64)
     aad = random.randbytes(400)
     

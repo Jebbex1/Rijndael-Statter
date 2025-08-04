@@ -1,6 +1,6 @@
 [project]
 name = "rijndael3d"
-version = "1.1.0"
+version = "1.1.1"
 description = "An enhanced version of Rijndael encryption"
 authors = [
     {name = "Jebbex",email = "107323805+Jebbex1@users.noreply.github.com"}
